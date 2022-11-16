@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% from 'common.html' import getId,resetId %}
+
+{% block header %}
+    <h1>{% block title %}{{ project_name }}{% endblock %}</h1>
+    {{ project_name }} is {{ description }}. {{ instructions | safe }}
+    <script src="{{ url_for("static", filename="index.js") }}"></script>
+    {{ resetId() }}
+{% endblock %}
+
+{% block content %}
+
+<div>
+Enter a song in GUIDO musical notation.<br/>
+<textarea class="song">
+% Greensleves in A-Minor. From 1500s.
+  a1/4 c2/2 d/4 e/4. f#/8 e/4  d/2 b1/4 g/4.  a/8  b/4
+% A    las  my  love -    you  do  me   wrong -    to
+  c2/2  a1/4 a/4. g#/8 a/4 b/2  g#/4  e/2 a/4
+% cast  me   off  so   dis cour teous ly  though
+  c2/2 d/4  e.    f#/8 e/4 d/2 b1/4 g.   a/8 b/4
+% I    have loved -    you oh  so   long -   de
+  c2.   b1/8 a/4 g#. f#/8 g/4  a/2 a/4 a/2.
+% light -    ing in  -    your com pa  ny
+</textarea>
+</div>
+<!--
+<textarea class="debug" disabled="disabled"></textarea>
+\title<"Greensleeves"> \clef<"treble">\meter<"3/4">
+  a1/4 \bar c2/2 d/4 \bar e/4. f#/8 e/4  \bar d/2 b1/4 \bar g/4.  a/8  b/4
+% A         las  my       love -    you       do  me        wrong -    to
+  c2/2  a1/4 \bar a/4. g#/8 a/4 \bar b/2  g#/4  \bar e/2 a/4
+% cast  me        off  so   dis      cour teous      ly  though
+  c2/2 d/4 \bar e.    f#/4 e/4 \bar d/2 b1/4 \bar g.   a/8 b/4 \bar
+% I    have     loved -    you      oh  so        long -   de
+  c2.   b1/8 a/4 \bar g#. f#/8 g/4 \bar a/2 a/4 \bar a/2. \bar
+% light -    ing      in  -    your     com pa       ny
+-->
+<!--
+%   [g     g       f#  e   d   b  g   a b]
+%   #green sleeves -   was all my joy - -
+%   [c     a a       g#  a   b  g# e]
+%   #green - sleeves -   was my de light
+%   [g     g       f#  e  d     b  g    a b]
+%   #green sleeves was my heart of gold - and
+%   [c   b   a  g# f# g# a     a]
+%   #who but my la -  dy green sleeves
+-->
+<input type="submit" class="play btn btn-primary" value="Play" />
+{% endblock %}
